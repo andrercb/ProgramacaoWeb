@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ProjectCRUD.Domain.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<br />
+<p>
+    <input type="button" class="btn btn-default" value="Criar novo Usuário " onclick="location.href='@Url.Action("Create", "Usuario")'" />
+    <br /><br />
+</p>
+@if (Model.Count() == 0)
+{
+    <h3 class="text-center">Nenhum Registro encontrado !</h3>
+}
+else
+{
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th style="padding-left:2%">
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th style="padding-left:5%">
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th style="padding-left:2%">
+                @Html.DisplayNameFor(model => model.Dt_nascimento)
+            </th>
+            <th style="padding-left:3%">
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th style="padding-left:5%">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th style="padding-left:5%">
+                Ação
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @if (item.Sexo == "1")
+                    {
+                        @Html.DisplayName("Masculino")
+                    }
+                    else
+                    {
+                        @Html.DisplayName("Feminino")
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cpf)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Dt_nascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <input type="button" class="btn btn-default btn-xs" value="Editar " onclick="location.href='@Url.Action("Edit", "Usuario", new { id = item.id })'" />
+                    <input type="button" class="btn btn-default btn-xs" value="Detalhar " onclick="location.href='@Url.Action("Details", "Usuario", new { id = item.id })'" />
+                    <input type="button" class="btn btn-default btn-xs" value="Excluir " onclick="location.href='@Url.Action("Delete", "Usuario", new { id = item.id })'" />
+                </td>
+            </tr>
+        }
+    </table>
+}

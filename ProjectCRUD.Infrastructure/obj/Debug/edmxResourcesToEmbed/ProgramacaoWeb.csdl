@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProgramacaoWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TB_BAIRRO">
+    <Key>
+      <PropertyRef Name="brr_codigo" />
+    </Key>
+    <Property Name="brr_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="brr_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="brr_deletado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TB_EMPRESA" Relationship="Self.FK_TB_EMPRESA_BAIRRO" FromRole="TB_BAIRRO" ToRole="TB_EMPRESA" />
+    <NavigationProperty Name="TB_USUARIO" Relationship="Self.FK_USUARIO_BAIRRO" FromRole="TB_BAIRRO" ToRole="TB_USUARIO" />
+  </EntityType>
+  <EntityType Name="TB_EMPRESA">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emp_nm_fantasia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_logradouro" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_complemento" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="emp_brr_codigo" Type="Int32" Nullable="false" />
+    <Property Name="emp_mnp_codigo_ibge" Type="Int32" Nullable="false" />
+    <Property Name="emp_uf_codigo" Type="Int32" Nullable="false" />
+    <Property Name="emp_cep" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="usr_telefone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="emp_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="emp_dt_atualizacao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="emp_deletado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TB_BAIRRO" Relationship="Self.FK_TB_EMPRESA_BAIRRO" FromRole="TB_EMPRESA" ToRole="TB_BAIRRO" />
+    <NavigationProperty Name="TB_MUNICIPIO" Relationship="Self.FK_EMPRESA_CIDADE" FromRole="TB_EMPRESA" ToRole="TB_MUNICIPIO" />
+    <NavigationProperty Name="TB_UF" Relationship="Self.FK_EMPRESA_UF" FromRole="TB_EMPRESA" ToRole="TB_UF" />
+    <NavigationProperty Name="TB_USUARIO" Relationship="Self.FK_USUARIO_EMPRESA" FromRole="TB_EMPRESA" ToRole="TB_USUARIO" />
+  </EntityType>
+  <EntityType Name="TB_MUNICIPIO">
+    <Key>
+      <PropertyRef Name="mnp_codigo_ibge" />
+    </Key>
+    <Property Name="mnp_codigo_ibge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mnp_nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mnp_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="mnp_deletado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TB_EMPRESA" Relationship="Self.FK_EMPRESA_CIDADE" FromRole="TB_MUNICIPIO" ToRole="TB_EMPRESA" />
+    <NavigationProperty Name="TB_USUARIO" Relationship="Self.FK_USUARIO_CIDADE" FromRole="TB_MUNICIPIO" ToRole="TB_USUARIO" />
+  </EntityType>
+  <EntityType Name="TB_PERFIL">
+    <Key>
+      <PropertyRef Name="pfl_id" />
+    </Key>
+    <Property Name="pfl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pfl_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pfl_descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pfl_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="pfl_dt_atualizacao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="pfl_deletado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TB_USUARIO" Relationship="Self.FK_USUARIO_PERFIL" FromRole="TB_PERFIL" ToRole="TB_USUARIO" />
+  </EntityType>
+  <EntityType Name="TB_UF">
+    <Key>
+      <PropertyRef Name="uf_codigo" />
+    </Key>
+    <Property Name="uf_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uf_sigla" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="uf_nome" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="uf_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="uf_deletado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TB_EMPRESA" Relationship="Self.FK_EMPRESA_UF" FromRole="TB_UF" ToRole="TB_EMPRESA" />
+    <NavigationProperty Name="TB_USUARIO" Relationship="Self.FK_USUARIO_UF" FromRole="TB_UF" ToRole="TB_USUARIO" />
+  </EntityType>
+  <EntityType Name="TB_USUARIO">
+    <Key>
+      <PropertyRef Name="usr_id" />
+    </Key>
+    <Property Name="usr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usr_nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usr_sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="usr_dt_nascimento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="usr_telefone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="usr_email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usr_senha" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usr_logradouro" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usr_complemento_logradouro" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="brr_codigo" Type="Int32" Nullable="false" />
+    <Property Name="mnp_codigo_ibge" Type="Int32" Nullable="false" />
+    <Property Name="usr_cep" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="uf_codigo" Type="Int32" Nullable="false" />
+    <Property Name="emp_id" Type="Int32" Nullable="false" />
+    <Property Name="pfl_id" Type="Int32" Nullable="false" />
+    <Property Name="usr_dt_cadastro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="usr_dt_atualizacao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="usr_deletado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TB_BAIRRO" Relationship="Self.FK_USUARIO_BAIRRO" FromRole="TB_USUARIO" ToRole="TB_BAIRRO" />
+    <NavigationProperty Name="TB_EMPRESA" Relationship="Self.FK_USUARIO_EMPRESA" FromRole="TB_USUARIO" ToRole="TB_EMPRESA" />
+    <NavigationProperty Name="TB_MUNICIPIO" Relationship="Self.FK_USUARIO_CIDADE" FromRole="TB_USUARIO" ToRole="TB_MUNICIPIO" />
+    <NavigationProperty Name="TB_PERFIL" Relationship="Self.FK_USUARIO_PERFIL" FromRole="TB_USUARIO" ToRole="TB_PERFIL" />
+    <NavigationProperty Name="TB_UF" Relationship="Self.FK_USUARIO_UF" FromRole="TB_USUARIO" ToRole="TB_UF" />
+  </EntityType>
+  <Association Name="FK_TB_EMPRESA_BAIRRO">
+    <End Role="TB_BAIRRO" Type="Self.TB_BAIRRO" Multiplicity="1" />
+    <End Role="TB_EMPRESA" Type="Self.TB_EMPRESA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_BAIRRO">
+        <PropertyRef Name="brr_codigo" />
+      </Principal>
+      <Dependent Role="TB_EMPRESA">
+        <PropertyRef Name="emp_brr_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_BAIRRO">
+    <End Role="TB_BAIRRO" Type="Self.TB_BAIRRO" Multiplicity="1" />
+    <End Role="TB_USUARIO" Type="Self.TB_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_BAIRRO">
+        <PropertyRef Name="brr_codigo" />
+      </Principal>
+      <Dependent Role="TB_USUARIO">
+        <PropertyRef Name="brr_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPRESA_CIDADE">
+    <End Role="TB_MUNICIPIO" Type="Self.TB_MUNICIPIO" Multiplicity="1" />
+    <End Role="TB_EMPRESA" Type="Self.TB_EMPRESA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MUNICIPIO">
+        <PropertyRef Name="mnp_codigo_ibge" />
+      </Principal>
+      <Dependent Role="TB_EMPRESA">
+        <PropertyRef Name="emp_mnp_codigo_ibge" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPRESA_UF">
+    <End Role="TB_UF" Type="Self.TB_UF" Multiplicity="1" />
+    <End Role="TB_EMPRESA" Type="Self.TB_EMPRESA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_UF">
+        <PropertyRef Name="uf_codigo" />
+      </Principal>
+      <Dependent Role="TB_EMPRESA">
+        <PropertyRef Name="emp_uf_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_EMPRESA">
+    <End Role="TB_EMPRESA" Type="Self.TB_EMPRESA" Multiplicity="1" />
+    <End Role="TB_USUARIO" Type="Self.TB_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_EMPRESA">
+        <PropertyRef Name="emp_id" />
+      </Principal>
+      <Dependent Role="TB_USUARIO">
+        <PropertyRef Name="emp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_CIDADE">
+    <End Role="TB_MUNICIPIO" Type="Self.TB_MUNICIPIO" Multiplicity="1" />
+    <End Role="TB_USUARIO" Type="Self.TB_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MUNICIPIO">
+        <PropertyRef Name="mnp_codigo_ibge" />
+      </Principal>
+      <Dependent Role="TB_USUARIO">
+        <PropertyRef Name="mnp_codigo_ibge" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_PERFIL">
+    <End Role="TB_PERFIL" Type="Self.TB_PERFIL" Multiplicity="1" />
+    <End Role="TB_USUARIO" Type="Self.TB_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PERFIL">
+        <PropertyRef Name="pfl_id" />
+      </Principal>
+      <Dependent Role="TB_USUARIO">
+        <PropertyRef Name="pfl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_UF">
+    <End Role="TB_UF" Type="Self.TB_UF" Multiplicity="1" />
+    <End Role="TB_USUARIO" Type="Self.TB_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_UF">
+        <PropertyRef Name="uf_codigo" />
+      </Principal>
+      <Dependent Role="TB_USUARIO">
+        <PropertyRef Name="uf_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProgramacaoWebEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TB_BAIRRO" EntityType="Self.TB_BAIRRO" />
+    <EntitySet Name="TB_EMPRESA" EntityType="Self.TB_EMPRESA" />
+    <EntitySet Name="TB_MUNICIPIO" EntityType="Self.TB_MUNICIPIO" />
+    <EntitySet Name="TB_PERFIL" EntityType="Self.TB_PERFIL" />
+    <EntitySet Name="TB_UF" EntityType="Self.TB_UF" />
+    <EntitySet Name="TB_USUARIO" EntityType="Self.TB_USUARIO" />
+    <AssociationSet Name="FK_TB_EMPRESA_BAIRRO" Association="Self.FK_TB_EMPRESA_BAIRRO">
+      <End Role="TB_BAIRRO" EntitySet="TB_BAIRRO" />
+      <End Role="TB_EMPRESA" EntitySet="TB_EMPRESA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_BAIRRO" Association="Self.FK_USUARIO_BAIRRO">
+      <End Role="TB_BAIRRO" EntitySet="TB_BAIRRO" />
+      <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPRESA_CIDADE" Association="Self.FK_EMPRESA_CIDADE">
+      <End Role="TB_MUNICIPIO" EntitySet="TB_MUNICIPIO" />
+      <End Role="TB_EMPRESA" EntitySet="TB_EMPRESA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPRESA_UF" Association="Self.FK_EMPRESA_UF">
+      <End Role="TB_UF" EntitySet="TB_UF" />
+      <End Role="TB_EMPRESA" EntitySet="TB_EMPRESA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_EMPRESA" Association="Self.FK_USUARIO_EMPRESA">
+      <End Role="TB_EMPRESA" EntitySet="TB_EMPRESA" />
+      <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_CIDADE" Association="Self.FK_USUARIO_CIDADE">
+      <End Role="TB_MUNICIPIO" EntitySet="TB_MUNICIPIO" />
+      <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_PERFIL" Association="Self.FK_USUARIO_PERFIL">
+      <End Role="TB_PERFIL" EntitySet="TB_PERFIL" />
+      <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_UF" Association="Self.FK_USUARIO_UF">
+      <End Role="TB_UF" EntitySet="TB_UF" />
+      <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

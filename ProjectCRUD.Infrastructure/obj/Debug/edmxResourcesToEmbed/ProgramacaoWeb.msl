@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProgramacaoWebModelStoreContainer" CdmEntityContainer="ProgramacaoWebEntities">
+    <EntitySetMapping Name="TB_BAIRRO">
+      <EntityTypeMapping TypeName="ProgramacaoWebModel.TB_BAIRRO">
+        <MappingFragment StoreEntitySet="TB_BAIRRO">
+          <ScalarProperty Name="brr_codigo" ColumnName="brr_codigo" />
+          <ScalarProperty Name="brr_dt_cadastro" ColumnName="brr_dt_cadastro" />
+          <ScalarProperty Name="brr_deletado" ColumnName="brr_deletado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_EMPRESA">
+      <EntityTypeMapping TypeName="ProgramacaoWebModel.TB_EMPRESA">
+        <MappingFragment StoreEntitySet="TB_EMPRESA">
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+          <ScalarProperty Name="emp_nm_fantasia" ColumnName="emp_nm_fantasia" />
+          <ScalarProperty Name="emp_logradouro" ColumnName="emp_logradouro" />
+          <ScalarProperty Name="emp_complemento" ColumnName="emp_complemento" />
+          <ScalarProperty Name="emp_brr_codigo" ColumnName="emp_brr_codigo" />
+          <ScalarProperty Name="emp_mnp_codigo_ibge" ColumnName="emp_mnp_codigo_ibge" />
+          <ScalarProperty Name="emp_uf_codigo" ColumnName="emp_uf_codigo" />
+          <ScalarProperty Name="emp_cep" ColumnName="emp_cep" />
+          <ScalarProperty Name="usr_telefone" ColumnName="usr_telefone" />
+          <ScalarProperty Name="emp_dt_cadastro" ColumnName="emp_dt_cadastro" />
+          <ScalarProperty Name="emp_dt_atualizacao" ColumnName="emp_dt_atualizacao" />
+          <ScalarProperty Name="emp_deletado" ColumnName="emp_deletado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MUNICIPIO">
+      <EntityTypeMapping TypeName="ProgramacaoWebModel.TB_MUNICIPIO">
+        <MappingFragment StoreEntitySet="TB_MUNICIPIO">
+          <ScalarProperty Name="mnp_codigo_ibge" ColumnName="mnp_codigo_ibge" />
+          <ScalarProperty Name="mnp_nome" ColumnName="mnp_nome" />
+          <ScalarProperty Name="mnp_dt_cadastro" ColumnName="mnp_dt_cadastro" />
+          <ScalarProperty Name="mnp_deletado" ColumnName="mnp_deletado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PERFIL">
+      <EntityTypeMapping TypeName="ProgramacaoWebModel.TB_PERFIL">
+        <MappingFragment StoreEntitySet="TB_PERFIL">
+          <ScalarProperty Name="pfl_id" ColumnName="pfl_id" />
+          <ScalarProperty Name="pfl_nome" ColumnName="pfl_nome" />
+          <ScalarProperty Name="pfl_descricao" ColumnName="pfl_descricao" />
+          <ScalarProperty Name="pfl_dt_cadastro" ColumnName="pfl_dt_cadastro" />
+          <ScalarProperty Name="pfl_dt_atualizacao" ColumnName="pfl_dt_atualizacao" />
+          <ScalarProperty Name="pfl_deletado" ColumnName="pfl_deletado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_UF">
+      <EntityTypeMapping TypeName="ProgramacaoWebModel.TB_UF">
+        <MappingFragment StoreEntitySet="TB_UF">
+          <ScalarProperty Name="uf_codigo" ColumnName="uf_codigo" />
+          <ScalarProperty Name="uf_sigla" ColumnName="uf_sigla" />
+          <ScalarProperty Name="uf_nome" ColumnName="uf_nome" />
+          <ScalarProperty Name="uf_dt_cadastro" ColumnName="uf_dt_cadastro" />
+          <ScalarProperty Name="uf_deletado" ColumnName="uf_deletado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_USUARIO">
+      <EntityTypeMapping TypeName="ProgramacaoWebModel.TB_USUARIO">
+        <MappingFragment StoreEntitySet="TB_USUARIO">
+          <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+          <ScalarProperty Name="usr_nome" ColumnName="usr_nome" />
+          <ScalarProperty Name="usr_sexo" ColumnName="usr_sexo" />
+          <ScalarProperty Name="usr_dt_nascimento" ColumnName="usr_dt_nascimento" />
+          <ScalarProperty Name="usr_telefone" ColumnName="usr_telefone" />
+          <ScalarProperty Name="usr_email" ColumnName="usr_email" />
+          <ScalarProperty Name="usr_senha" ColumnName="usr_senha" />
+          <ScalarProperty Name="usr_logradouro" ColumnName="usr_logradouro" />
+          <ScalarProperty Name="usr_complemento_logradouro" ColumnName="usr_complemento_logradouro" />
+          <ScalarProperty Name="brr_codigo" ColumnName="brr_codigo" />
+          <ScalarProperty Name="mnp_codigo_ibge" ColumnName="mnp_codigo_ibge" />
+          <ScalarProperty Name="usr_cep" ColumnName="usr_cep" />
+          <ScalarProperty Name="uf_codigo" ColumnName="uf_codigo" />
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+          <ScalarProperty Name="pfl_id" ColumnName="pfl_id" />
+          <ScalarProperty Name="usr_dt_cadastro" ColumnName="usr_dt_cadastro" />
+          <ScalarProperty Name="usr_dt_atualizacao" ColumnName="usr_dt_atualizacao" />
+          <ScalarProperty Name="usr_deletado" ColumnName="usr_deletado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
