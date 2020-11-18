@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<script src="~/Scripts/Js.js"></script>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Programação Web", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse text-right">
+                <ul class="nav navbar-nav ">
+                    <li>@Html.ActionLink("Sair", "Index", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <br /><br /><br /><br /><br /><br /><br /><br />
+        <hr />
+        <footer class="text-center">
+            <p>&copy; @DateTime.Now.Year - ProgramaWeb@ProgramaWeb.com.br</p>
+            <p>
+                © Copyright 2000-2020 Comunicação e Participações S.A.
+                Brasília | DF - Política de privacidade e segurança
+            </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/inputmask")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

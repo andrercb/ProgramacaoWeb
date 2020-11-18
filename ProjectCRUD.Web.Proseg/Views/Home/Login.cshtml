@@ -1,0 +1,65 @@
+﻿@model ProjectCRUD.Domain.Models.Login
+@{
+    ViewBag.Title = "Login";
+}
+@using (Html.BeginForm())
+{
+    @section Scripts {
+
+        <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#CpfUsuario").mask('000.000.000-00', { reverse: false });
+            })
+        </script>
+    }
+    <html>
+    <head>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center align-items-center" style="height:100vh">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <h2>@ViewBag.Title</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <fieldset class="">
+                                            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <h4>Use uma conta local para fazer login.</h4>
+                                                <hr />
+
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.CpfUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.EditorFor(m => m.CpfUsuario, new { htmlAttributes = new { @class = "form-control", @maxlength = "14", placeholder = "CPF Usuário", onkeypress = "return MascaraNumerico(event)" } })
+                                                    @Html.ValidationMessageFor(m => m.CpfUsuario, "", new { @class = "text-danger form-text text-muted" })
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.SenhaUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.EditorFor(m => m.SenhaUsuario, new { htmlAttributes = new { @class = "form-control", placeholder = "Senha Usuário" } })
+                                                    @Html.ValidationMessageFor(m => m.SenhaUsuario, "", new { @class = "text-danger form-text text-muted" })
+                                                </div>
+                                                <p>@Html.ValidationSummary(true, "", new { @class = "text-danger form-text text-muted" })</p>
+                                                <br /><br />
+                                                <input type="submit" value="Entrar" class="btn btn-default col-md-4" />
+                                            }
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+}

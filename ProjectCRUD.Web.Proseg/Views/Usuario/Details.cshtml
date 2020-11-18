@@ -1,0 +1,151 @@
+﻿@model ProjectCRUD.Domain.Models.Usuario
+
+@{
+    ViewBag.Title = "Visualizar";
+}
+
+<h2>Visualizar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </dt>
+
+        <dd>
+            @if (Model.Sexo == "1")
+            {
+                @Html.DisplayName("Masculino")
+            }
+            else
+            {
+                @Html.DisplayName("Feminino")
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dt_nascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dt_nascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logradouro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplementoLogradouro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ComplementoLogradouro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoBairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoBairro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoMunicipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoMunicipio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoEmpresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoEmpresa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoPerfil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoPerfil)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dt_cadastro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dt_cadastro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dt_atualizacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dt_atualizacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deletado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deletado)
+        </dd>
+
+    </dl>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" class="col-md-1 btn btn-default" value="Editar " onclick="location.href='@Url.Action("Edit", "Usuario", new { id=Model.id })'" />
+
+        </div>
+    </div>
+</div>
+<div>
+    <br /><br /><br /><br />
+    <input type="button" class="col-md-1 btn btn-info" value="Voltar " onclick="location.href='@Url.Action("Index", "Usuario")'" />
+</div>

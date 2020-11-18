@@ -1,0 +1,247 @@
+﻿@model ProjectCRUD.Domain.Models.Usuario
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editar Usuário</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @section Scripts {
+
+        <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $("#Cpf").mask('000.000.000-00', { reverse: false });
+                $("#Telefone").mask('(00)00000-0000', { reverse: false });
+                $("#Cep").mask('00.000-000', { reverse: false });
+
+                $(function () {
+                    $("#datepickerDataNascimento").datepicker({
+                        dateFormat: 'dd/mm/yy',
+                        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+                        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                        yearRange: "1930:2020",
+                        changeMonth: true,
+                        changeYear: true
+                    }).attr('readonly', 'readonly');
+                });
+            })
+        </script>
+    }
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    </head>
+    <body>
+        <form>
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @maxlength = "100", onkeypress = "return Letras()" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Sexo, new List<SelectListItem>
+                                             {
+                                               new SelectListItem { Text = "Masculino", Value = "1"},
+                                               new SelectListItem { Text = "Feminino", Value = "2"}
+                                             }, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control", @maxlength = "14", placeholder = "000.000.000-00", onkeypress = "return MascaraNumerico(event)" } })
+                        @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Dt_nascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Dt_nascimento, new { htmlAttributes = new { @class = "form-control", placeholder = "00/00/0000", @id = "datepickerDataNascimento" } })
+                        @Html.ValidationMessageFor(model => model.Dt_nascimento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", @maxlength = "15", placeholder = "(00) 00000-0000", onkeypress = "return MascaraNumerico(event)" } })
+                        @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @maxlength = "30", placeholder = "usuario@dominio.com.br" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control", @maxlength = "150" } })
+                        @Html.ValidationMessageFor(model => model.Logradouro, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ComplementoLogradouro, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.ComplementoLogradouro, new { htmlAttributes = new { @class = "form-control", @maxlength = "150" } })
+                            @Html.ValidationMessageFor(model => model.ComplementoLogradouro, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cep, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control", @maxlength = "10", onkeypress = "return MascaraNumerico(event)" } })
+                            @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodigoUf, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.DropDownListFor(model => model.CodigoUf, new List<SelectListItem>
+                                             {
+                                               new SelectListItem { Text = "AC", Value = "1"},
+                                               new SelectListItem { Text = "AL", Value = "2"},
+                                               new SelectListItem { Text = "AP", Value = "3"},
+                                               new SelectListItem { Text = "AM", Value = "4"},
+                                               new SelectListItem { Text = "BA", Value = "5"},
+                                               new SelectListItem { Text = "CE", Value = "6"},
+                                               new SelectListItem { Text = "DF", Value = "7"},
+                                               new SelectListItem { Text = "ES", Value = "8"},
+                                               new SelectListItem { Text = "GO", Value = "9"},
+                                               new SelectListItem { Text = "MA", Value = "10"},
+                                               new SelectListItem { Text = "MT", Value = "11"},
+                                               new SelectListItem { Text = "MS", Value = "12"},
+                                               new SelectListItem { Text = "MG", Value = "13"},
+                                               new SelectListItem { Text = "PA", Value = "14"},
+                                               new SelectListItem { Text = "PB", Value = "15"},
+                                               new SelectListItem { Text = "PR", Value = "16"},
+                                               new SelectListItem { Text = "PR", Value = "17"},
+                                               new SelectListItem { Text = "PI", Value = "18"},
+                                               new SelectListItem { Text = "RJ", Value = "19"},
+                                               new SelectListItem { Text = "RN", Value = "20"},
+                                               new SelectListItem { Text = "RS", Value = "21"},
+                                               new SelectListItem { Text = "RO", Value = "22"},
+                                               new SelectListItem { Text = "RR", Value = "23"},
+                                               new SelectListItem { Text = "SC", Value = "24"},
+                                               new SelectListItem { Text = "SP", Value = "25"},
+                                               new SelectListItem { Text = "SE", Value = "26"},
+                                               new SelectListItem { Text = "TO", Value = "27"},
+                                             }, "Selecione o Estado", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CodigoUf, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodigoMunicipio, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.DropDownListFor(model => model.CodigoMunicipio, new List<SelectListItem>
+                                             {
+                                               new SelectListItem { Text = "São Paulo", Value = "1"},
+                                               new SelectListItem { Text = "Guarulhos ", Value = "2"},
+                                               new SelectListItem { Text = "Campinas ", Value = "3"}
+                                             }, "Selecione o Município", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CodigoMunicipio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodigoBairro, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.CodigoBairro, new List<SelectListItem>
+                                             {
+                                               new SelectListItem { Text = "Parque Quinta das Paineiras", Value = "1"},
+                                               new SelectListItem { Text = "Vila Andrade", Value = "3"},
+                                               new SelectListItem { Text = "Morumbi", Value = "5"}
+                                             }, "Selecione o Bairro", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CodigoBairro, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodigoEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.DropDownListFor(model => model.CodigoEmpresa, new List<SelectListItem>
+                                             {
+                                               new SelectListItem { Text = "Sueli e Roberto Financeira ME", Value = "7"},
+                                             }, "Selecione a Empresa", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CodigoEmpresa, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodigoPerfil, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.DropDownListFor(model => model.CodigoPerfil, new List<SelectListItem>
+                                             {
+                                               new SelectListItem { Text = "Administrador", Value = "1"},
+                                               new SelectListItem { Text = "Usuário", Value = "3"},
+                                             }, "Selecione o Perfil", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CodigoPerfil, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group invisible">
+                    @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Senha, new { @class = "form-control", placeholder = "Digite sua Senha" })
+                        @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Salvar" class="col-md-1 btn btn-default" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <br />
+                <input type="button" class="col-md-1 btn btn-info" value="Voltar " onclick="location.href='@Url.Action("Index", "Usuario")'" />
+            </div>
+        </form>
+    </body>
+</html>
+}
