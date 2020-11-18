@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ProjectCRUD.Web.Proseg.Controllers
+namespace ProjectCRUD.Web.Controllers
 {
     public class UsuarioController : Controller
     {

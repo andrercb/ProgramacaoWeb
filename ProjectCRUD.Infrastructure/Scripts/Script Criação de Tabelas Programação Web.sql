@@ -1,0 +1,263 @@
+USE [master]
+GO
+/****** Object:  Database [ProgramacaoWeb]    Script Date: 11/11/2020 14:15:44 ******/
+CREATE DATABASE [ProgramacaoWeb] ON  PRIMARY 
+( NAME = N'ProgramacaoWeb', FILENAME = N'E:\BANCOS\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\ProgramacaoWeb.mdf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'ProgramacaoWeb_log', FILENAME = N'E:\BANCOS\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\ProgramacaoWeb_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [ProgramacaoWeb] SET COMPATIBILITY_LEVEL = 100
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [ProgramacaoWeb].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [ProgramacaoWeb] SET ANSI_NULL_DEFAULT OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET ANSI_NULLS OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET ANSI_PADDING OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET ANSI_WARNINGS OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET ARITHABORT OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET AUTO_CLOSE OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET AUTO_CREATE_STATISTICS ON
+GO
+ALTER DATABASE [ProgramacaoWeb] SET AUTO_SHRINK OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET AUTO_UPDATE_STATISTICS ON
+GO
+ALTER DATABASE [ProgramacaoWeb] SET CURSOR_CLOSE_ON_COMMIT OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET CURSOR_DEFAULT  GLOBAL
+GO
+ALTER DATABASE [ProgramacaoWeb] SET CONCAT_NULL_YIELDS_NULL OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET NUMERIC_ROUNDABORT OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET QUOTED_IDENTIFIER OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET RECURSIVE_TRIGGERS OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET  DISABLE_BROKER
+GO
+ALTER DATABASE [ProgramacaoWeb] SET AUTO_UPDATE_STATISTICS_ASYNC OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET DATE_CORRELATION_OPTIMIZATION OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET TRUSTWORTHY OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET ALLOW_SNAPSHOT_ISOLATION OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET PARAMETERIZATION SIMPLE
+GO
+ALTER DATABASE [ProgramacaoWeb] SET READ_COMMITTED_SNAPSHOT OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET HONOR_BROKER_PRIORITY OFF
+GO
+ALTER DATABASE [ProgramacaoWeb] SET  READ_WRITE
+GO
+ALTER DATABASE [ProgramacaoWeb] SET RECOVERY FULL
+GO
+ALTER DATABASE [ProgramacaoWeb] SET  MULTI_USER
+GO
+ALTER DATABASE [ProgramacaoWeb] SET PAGE_VERIFY CHECKSUM
+GO
+ALTER DATABASE [ProgramacaoWeb] SET DB_CHAINING OFF
+GO
+USE [ProgramacaoWeb]
+GO
+/****** Object:  Table [dbo].[TB_BAIRRO]    Script Date: 11/11/2020 14:15:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TB_BAIRRO](
+	[brr_codigo] [int] IDENTITY(1,1) NOT NULL,
+	[brr_descricao] [varchar](50) NOT NULL,
+	[brr_dt_cadastro] [datetime] NOT NULL,
+	[brr_deletado] [bit] NOT NULL,
+ CONSTRAINT [PK_BAIRRO] PRIMARY KEY CLUSTERED 
+(
+	[brr_codigo] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TB_UF]    Script Date: 11/11/2020 14:15:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[TB_UF](
+	[uf_codigo] [int] IDENTITY(1,1) NOT NULL,
+	[uf_sigla] [char](2) NOT NULL,
+	[uf_nome] [varchar](150) NOT NULL,
+	[uf_dt_cadastro] [datetime] NOT NULL,
+	[uf_deletado] [bit] NOT NULL,
+ CONSTRAINT [PK_UF] PRIMARY KEY CLUSTERED 
+(
+	[uf_codigo] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TB_PERFIL]    Script Date: 11/11/2020 14:15:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[TB_PERFIL](
+	[pfl_id] [int] IDENTITY(1,1) NOT NULL,
+	[pfl_nome] [varchar](50) NOT NULL,
+	[pfl_descricao] [varchar](100) NOT NULL,
+	[pfl_dt_cadastro] [datetime] NOT NULL,
+	[pfl_dt_atualizacao] [datetime] NOT NULL,
+	[pfl_deletado] [bit] NOT NULL,
+ CONSTRAINT [PK_PERFIL] PRIMARY KEY CLUSTERED 
+(
+	[pfl_id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TB_MUNICIPIO]    Script Date: 11/11/2020 14:15:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[TB_MUNICIPIO](
+	[mnp_codigo_ibge] [int] IDENTITY(1,1) NOT NULL,
+	[mnp_nome] [varchar](100) NOT NULL,
+	[mnp_dt_cadastro] [datetime] NOT NULL,
+	[mnp_deletado] [bit] NOT NULL,
+ CONSTRAINT [PK_MUNICIPIO] PRIMARY KEY CLUSTERED 
+(
+	[mnp_codigo_ibge] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TB_EMPRESA]    Script Date: 11/11/2020 14:15:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[TB_EMPRESA](
+	[emp_id] [int] IDENTITY(1,1) NOT NULL,
+	[emp_nm_fantasia] [varchar](100) NOT NULL,
+	[emp_logradouro] [varchar](150) NOT NULL,
+	[emp_complemento] [varchar](150) NULL,
+	[emp_brr_codigo] [int] NOT NULL,
+	[emp_mnp_codigo_ibge] [int] NOT NULL,
+	[emp_uf_codigo] [int] NOT NULL,
+	[emp_cep] [char](8) NOT NULL,
+	[usr_telefone] [char](11) NOT NULL,
+	[emp_dt_cadastro] [datetime] NOT NULL,
+	[emp_dt_atualizacao] [datetime] NOT NULL,
+	[emp_deletado] [bit] NOT NULL,
+ CONSTRAINT [PK_EMPRESA] PRIMARY KEY CLUSTERED 
+(
+	[emp_id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[TB_USUARIO]    Script Date: 11/11/2020 14:15:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[TB_USUARIO](
+	[usr_id] [int] IDENTITY(1,1) NOT NULL,
+	[usr_nome] [varchar](100) NOT NULL,
+	[usr_cpf] [char](11) NOT NULL,
+	[usr_sexo] [char](1) NOT NULL,
+	[usr_dt_nascimento] [date] NOT NULL,
+	[usr_telefone] [char](11) NOT NULL,
+	[usr_email] [varchar](100) NOT NULL,
+	[usr_senha] [varchar](15) NOT NULL,
+	[usr_logradouro] [varchar](150) NOT NULL,
+	[usr_complemento_logradouro] [varchar](150) NULL,
+	[brr_codigo] [int] NOT NULL,
+	[mnp_codigo_ibge] [int] NOT NULL,
+	[usr_cep] [char](8) NOT NULL,
+	[uf_codigo] [int] NOT NULL,
+	[emp_id] [int] NOT NULL,
+	[pfl_id] [int] NOT NULL,
+	[usr_dt_cadastro] [datetime] NOT NULL,
+	[usr_dt_atualizacao] [datetime] NOT NULL,
+	[usr_deletado] [bit] NOT NULL,
+ CONSTRAINT [PK_USUARIO] PRIMARY KEY CLUSTERED 
+(
+	[usr_id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  ForeignKey [FK_EMPRESA_CIDADE]    Script Date: 11/11/2020 14:15:46 ******/
+ALTER TABLE [dbo].[TB_EMPRESA]  WITH CHECK ADD  CONSTRAINT [FK_EMPRESA_CIDADE] FOREIGN KEY([emp_mnp_codigo_ibge])
+REFERENCES [dbo].[TB_MUNICIPIO] ([mnp_codigo_ibge])
+GO
+ALTER TABLE [dbo].[TB_EMPRESA] CHECK CONSTRAINT [FK_EMPRESA_CIDADE]
+GO
+/****** Object:  ForeignKey [FK_EMPRESA_UF]    Script Date: 11/11/2020 14:15:46 ******/
+ALTER TABLE [dbo].[TB_EMPRESA]  WITH CHECK ADD  CONSTRAINT [FK_EMPRESA_UF] FOREIGN KEY([emp_uf_codigo])
+REFERENCES [dbo].[TB_UF] ([uf_codigo])
+GO
+ALTER TABLE [dbo].[TB_EMPRESA] CHECK CONSTRAINT [FK_EMPRESA_UF]
+GO
+/****** Object:  ForeignKey [FK_TB_EMPRESA_BAIRRO]    Script Date: 11/11/2020 14:15:46 ******/
+ALTER TABLE [dbo].[TB_EMPRESA]  WITH CHECK ADD  CONSTRAINT [FK_TB_EMPRESA_BAIRRO] FOREIGN KEY([emp_brr_codigo])
+REFERENCES [dbo].[TB_BAIRRO] ([brr_codigo])
+GO
+ALTER TABLE [dbo].[TB_EMPRESA] CHECK CONSTRAINT [FK_TB_EMPRESA_BAIRRO]
+GO
+/****** Object:  ForeignKey [FK_USUARIO_BAIRRO]    Script Date: 11/11/2020 14:15:46 ******/
+ALTER TABLE [dbo].[TB_USUARIO]  WITH CHECK ADD  CONSTRAINT [FK_USUARIO_BAIRRO] FOREIGN KEY([brr_codigo])
+REFERENCES [dbo].[TB_BAIRRO] ([brr_codigo])
+GO
+ALTER TABLE [dbo].[TB_USUARIO] CHECK CONSTRAINT [FK_USUARIO_BAIRRO]
+GO
+/****** Object:  ForeignKey [FK_USUARIO_CIDADE]    Script Date: 11/11/2020 14:15:46 ******/
+ALTER TABLE [dbo].[TB_USUARIO]  WITH CHECK ADD  CONSTRAINT [FK_USUARIO_CIDADE] FOREIGN KEY([mnp_codigo_ibge])
+REFERENCES [dbo].[TB_MUNICIPIO] ([mnp_codigo_ibge])
+GO
+ALTER TABLE [dbo].[TB_USUARIO] CHECK CONSTRAINT [FK_USUARIO_CIDADE]
+GO
+/****** Object:  ForeignKey [FK_USUARIO_EMPRESA]    Script Date: 11/11/2020 14:15:46 ******/
+ALTER TABLE [dbo].[TB_USUARIO]  WITH CHECK ADD  CONSTRAINT [FK_USUARIO_EMPRESA] FOREIGN KEY([emp_id])
+REFERENCES [dbo].[TB_EMPRESA] ([emp_id])
+GO
+ALTER TABLE [dbo].[TB_USUARIO] CHECK CONSTRAINT [FK_USUARIO_EMPRESA]
+GO
+/****** Object:  ForeignKey [FK_USUARIO_PERFIL]    Script Date: 11/11/2020 14:15:46 ******/
+ALTER TABLE [dbo].[TB_USUARIO]  WITH CHECK ADD  CONSTRAINT [FK_USUARIO_PERFIL] FOREIGN KEY([pfl_id])
+REFERENCES [dbo].[TB_PERFIL] ([pfl_id])
+GO
+ALTER TABLE [dbo].[TB_USUARIO] CHECK CONSTRAINT [FK_USUARIO_PERFIL]
+GO
+/****** Object:  ForeignKey [FK_USUARIO_UF]    Script Date: 11/11/2020 14:15:46 ******/
+ALTER TABLE [dbo].[TB_USUARIO]  WITH CHECK ADD  CONSTRAINT [FK_USUARIO_UF] FOREIGN KEY([uf_codigo])
+REFERENCES [dbo].[TB_UF] ([uf_codigo])
+GO
+ALTER TABLE [dbo].[TB_USUARIO] CHECK CONSTRAINT [FK_USUARIO_UF]
+GO

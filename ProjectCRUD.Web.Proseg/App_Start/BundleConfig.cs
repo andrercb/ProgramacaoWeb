@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ProjectCRUD.Web.Proseg
+namespace ProjectCRUD.Web
 {
     public class BundleConfig
     {

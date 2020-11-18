@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1062
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCRUD.Web.Proseg", "ProjectCRUD.Web.Proseg\ProjectCRUD.Web.Proseg.csproj", "{D55EC88B-88F8-4537-945E-43C6269B3CCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCRUD.Web", "ProjectCRUD.Web.Proseg\ProjectCRUD.Web.csproj", "{D55EC88B-88F8-4537-945E-43C6269B3CCF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{615BA152-0CBB-4C67-AFD2-2712390ABA83} = {615BA152-0CBB-4C67-AFD2-2712390ABA83}
 		{1CF64CCC-9558-4978-A3A9-9BB76D1E1AFD} = {1CF64CCC-9558-4978-A3A9-9BB76D1E1AFD}

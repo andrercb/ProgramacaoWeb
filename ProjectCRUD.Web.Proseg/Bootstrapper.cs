@@ -7,7 +7,7 @@ using ProjectCRUD.Infrastructure.Repositorys;
 using System.Web.Mvc;
 using Unity.Mvc4;
 
-namespace ProjectCRUD.Web.Proseg
+namespace ProjectCRUD.Web
 {
     public static class Bootstrapper
     {
