@@ -72,9 +72,9 @@ else
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    <input type="button" class="btn btn-default btn-xs" value="Editar " onclick="location.href='@Url.Action("Edit", "Usuario", new { id = item.id })'" />
-                    <input type="button" class="btn btn-default btn-xs" value="Detalhar " onclick="location.href='@Url.Action("Details", "Usuario", new { id = item.id })'" />
-                    <input type="button" class="btn btn-default btn-xs" value="Excluir " onclick="location.href='@Url.Action("Delete", "Usuario", new { id = item.id })'" />
+                    <input type="button" class="btn btn-default btn-xs" value="Editar " onclick="location.href='@Url.Action("Edit", "Usuario", new { id = item.Id })'" />
+                    <input type="button" class="btn btn-default btn-xs" value="Detalhar " onclick="location.href='@Url.Action("Details", "Usuario", new { id = item.Id })'" />
+                    <input type="button" class="btn btn-default btn-xs" value="Excluir " onclick="location.href='@Url.Action("Delete", "Usuario", new { id = item.Id })'" />
                 </td>
             </tr>
         }

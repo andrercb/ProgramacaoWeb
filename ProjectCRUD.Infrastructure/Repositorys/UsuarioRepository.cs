@@ -34,7 +34,7 @@ namespace ProjectCRUD.Infrastructure.Repositorys
                             {
                                 usuario = new Usuario
                                 {
-                                    id = Convert.ToInt32(sdr["usr_id"]),
+                                    Id = Convert.ToInt32(sdr["usr_id"]),
                                     Nome = Convert.ToString(sdr["usr_nome"]),
                                     Sexo = Convert.ToString(sdr["usr_sexo"]),
                                     Senha = Convert.ToString(sdr["usr_senha"]),
@@ -44,10 +44,10 @@ namespace ProjectCRUD.Infrastructure.Repositorys
                                     Email = Convert.ToString(sdr["usr_email"]),
                                     Logradouro = Convert.ToString(sdr["usr_logradouro"]),
                                     ComplementoLogradouro = Convert.ToString(sdr["usr_complemento_logradouro"]),
-                                    CodigoBairro = Convert.ToInt32(sdr["brr_codigo"]),
-                                    CodigoMunicipio = Convert.ToInt32(sdr["mnp_codigo_ibge"]),
+                                    Bairro = Convert.ToString(sdr["usr_bairro"]),
+                                    Municipio = Convert.ToString(sdr["usr_municipio"]),
                                     Cep = Convert.ToString(sdr["usr_cep"]),
-                                    CodigoUf = Convert.ToInt32(sdr["uf_codigo"]),
+                                    Uf = Convert.ToString(sdr["usr_uf"]),
                                     CodigoEmpresa = Convert.ToInt32(sdr["emp_id"]),
                                     CodigoPerfil = Convert.ToInt32(sdr["pfl_id"]),
                                     Dt_cadastro = Convert.ToDateTime(sdr["usr_dt_cadastro"]),
@@ -89,7 +89,7 @@ namespace ProjectCRUD.Infrastructure.Repositorys
                             {
                                 Usuario usuario = new Usuario()
                                 {
-                                    id = Convert.ToInt32(sdr["usr_id"]),
+                                    Id = Convert.ToInt32(sdr["usr_id"]),
                                     Nome = Convert.ToString(sdr["usr_nome"]),
                                     Sexo = Convert.ToString(sdr["usr_sexo"]),
                                     Cpf = Convert.ToString(sdr["usr_cpf"]),
@@ -98,10 +98,10 @@ namespace ProjectCRUD.Infrastructure.Repositorys
                                     Email = Convert.ToString(sdr["usr_email"]),
                                     Logradouro = Convert.ToString(sdr["usr_logradouro"]),
                                     ComplementoLogradouro = Convert.ToString(sdr["usr_complemento_logradouro"]),
-                                    CodigoBairro = Convert.ToInt32(sdr["brr_codigo"]),
-                                    CodigoMunicipio = Convert.ToInt32(sdr["mnp_codigo_ibge"]),
+                                    Bairro = Convert.ToString(sdr["usr_bairro"]),
+                                    Municipio = Convert.ToString(sdr["usr_municipio"]),
                                     Cep = Convert.ToString(sdr["usr_cep"]),
-                                    CodigoUf = Convert.ToInt32(sdr["uf_codigo"]),
+                                    Uf = Convert.ToString(sdr["usr_uf"]),
                                     CodigoEmpresa = Convert.ToInt32(sdr["emp_id"]),
                                     Dt_cadastro = Convert.ToDateTime(sdr["usr_dt_cadastro"]),
                                     Dt_atualizacao = Convert.ToDateTime(sdr["usr_dt_atualizacao"]),
@@ -130,7 +130,7 @@ namespace ProjectCRUD.Infrastructure.Repositorys
 
                 var query = "INSERT INTO[ProgramacaoWeb].[dbo].[TB_USUARIO]" +
                                 "([usr_nome]" + ",[usr_cpf]" + ",[usr_sexo]" + ",[usr_dt_nascimento]" + ",[usr_telefone]" + ",[usr_email]" + ",[usr_senha]" + ",[usr_logradouro]" + ",[usr_complemento_logradouro]" +
-                                ",[brr_codigo]" + ",[mnp_codigo_ibge]" + ",[usr_cep]" + ",[uf_codigo]" + ",[emp_id]" + ",[pfl_id]" + ",[usr_dt_cadastro]" + ",[usr_dt_atualizacao]" + ",[usr_deletado])" +
+                                ",[usr_bairro]" + ",[usr_municipio]" + ",[usr_cep]" + ",[usr_uf]" + ",[emp_id]" + ",[pfl_id]" + ",[usr_dt_cadastro]" + ",[usr_dt_atualizacao]" + ",[usr_deletado])" +
                                 "VALUES(@Nome,@Cpf,@Sexo,@Dt_nascimento,@Telefone,@Email,@Senha,@Logradouro,@ComplementoLogradouro,@CodigoBairro,@CodigoMunicipio,@Cep,@CodigoUf,@CodigoEmpresa,@CodigoPerfil,GETDATE(),GETDATE(),0)";
 
 
@@ -147,10 +147,10 @@ namespace ProjectCRUD.Infrastructure.Repositorys
                         cmd.Parameters.AddWithValue("@Senha", usuario.Senha);
                         cmd.Parameters.AddWithValue("@Logradouro", usuario.Logradouro);
                         cmd.Parameters.AddWithValue("@ComplementoLogradouro", usuario.ComplementoLogradouro);
-                        cmd.Parameters.AddWithValue("@CodigoBairro", usuario.CodigoBairro);
-                        cmd.Parameters.AddWithValue("@CodigoMunicipio", usuario.CodigoMunicipio);
+                        cmd.Parameters.AddWithValue("@CodigoBairro", usuario.Bairro);
+                        cmd.Parameters.AddWithValue("@CodigoMunicipio", usuario.Municipio);
                         cmd.Parameters.AddWithValue("@Cep", usuario.Cep);
-                        cmd.Parameters.AddWithValue("@CodigoUf", usuario.CodigoUf);
+                        cmd.Parameters.AddWithValue("@CodigoUf", usuario.Uf);
                         cmd.Parameters.AddWithValue("@CodigoEmpresa", usuario.CodigoEmpresa);
                         cmd.Parameters.AddWithValue("@CodigoPerfil", usuario.CodigoPerfil);
 
@@ -182,15 +182,15 @@ namespace ProjectCRUD.Infrastructure.Repositorys
                             ",[usr_email] = @Email" +
                             ",[usr_logradouro] = @Logradouro" +
                             ",[usr_complemento_logradouro] = @ComplementoLogradouro" +
-                            ",[brr_codigo] = @CodigoBairro" +
-                            ",[mnp_codigo_ibge] = @CodigoMunicipio" +
+                            ",[usr_bairro] = @CodigoBairro" +
+                            ",[usr_municipio] = @CodigoMunicipio" +
                             ",[usr_cep] = @Cep" +
-                            ",[uf_codigo] = @CodigoUf" +
+                            ",[usr_uf] = @CodigoUf" +
                             ",[emp_id] = @CodigoEmpresa" +
                             ",[pfl_id] = @CodigoPerfil" +
                             ",[usr_dt_atualizacao] = GETDATE()" +
                             "WHERE" +
-                            " [usr_id] = " + usuario.id;
+                            " [usr_id] = " + usuario.Id;
 
 
                 using (SqlConnection connection = new SqlConnection(_db.Database.Connection.ConnectionString.ToString()))
@@ -205,10 +205,10 @@ namespace ProjectCRUD.Infrastructure.Repositorys
                         cmd.Parameters.AddWithValue("@Email", usuario.Email);
                         cmd.Parameters.AddWithValue("@Logradouro", usuario.Logradouro);
                         cmd.Parameters.AddWithValue("@ComplementoLogradouro", usuario.ComplementoLogradouro);
-                        cmd.Parameters.AddWithValue("@CodigoBairro", usuario.CodigoBairro);
-                        cmd.Parameters.AddWithValue("@CodigoMunicipio", usuario.CodigoMunicipio);
+                        cmd.Parameters.AddWithValue("@CodigoBairro", usuario.Bairro);
+                        cmd.Parameters.AddWithValue("@CodigoMunicipio", usuario.Municipio);
                         cmd.Parameters.AddWithValue("@Cep", usuario.Cep);
-                        cmd.Parameters.AddWithValue("@CodigoUf", usuario.CodigoUf);
+                        cmd.Parameters.AddWithValue("@CodigoUf", usuario.Uf);
                         cmd.Parameters.AddWithValue("@CodigoEmpresa", usuario.CodigoEmpresa);
                         cmd.Parameters.AddWithValue("@CodigoPerfil", usuario.CodigoPerfil);
 
@@ -278,7 +278,7 @@ namespace ProjectCRUD.Infrastructure.Repositorys
                             {
                                 usuario = new Usuario
                                 {
-                                    id = Convert.ToInt32(sdr["usr_id"]),
+                                    Id = Convert.ToInt32(sdr["usr_id"]),
                                     Nome = Convert.ToString(sdr["usr_nome"]),
                                     Sexo = Convert.ToString(sdr["usr_sexo"]),
                                     Senha = Convert.ToString(sdr["usr_senha"]),
@@ -288,10 +288,10 @@ namespace ProjectCRUD.Infrastructure.Repositorys
                                     Email = Convert.ToString(sdr["usr_email"]),
                                     Logradouro = Convert.ToString(sdr["usr_logradouro"]),
                                     ComplementoLogradouro = Convert.ToString(sdr["usr_complemento_logradouro"]),
-                                    CodigoBairro = Convert.ToInt32(sdr["brr_codigo"]),
-                                    CodigoMunicipio = Convert.ToInt32(sdr["mnp_codigo_ibge"]),
+                                    Bairro = Convert.ToString(sdr["usr_bairro"]),
+                                    Municipio = Convert.ToString(sdr["usr_municipio"]),
                                     Cep = Convert.ToString(sdr["usr_cep"]),
-                                    CodigoUf = Convert.ToInt32(sdr["uf_codigo"]),
+                                    Uf = Convert.ToString(sdr["usr_uf"]),
                                     CodigoEmpresa = Convert.ToInt32(sdr["emp_id"]),
                                     CodigoPerfil = Convert.ToInt32(sdr["pfl_id"]),
                                     Dt_cadastro = Convert.ToDateTime(sdr["usr_dt_cadastro"]),

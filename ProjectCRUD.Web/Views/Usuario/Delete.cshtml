@@ -12,6 +12,7 @@
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Nome)
         </dd>
@@ -19,6 +20,7 @@
         <dt>
             @Html.DisplayNameFor(model => model.Sexo)
         </dt>
+
         <dd>
             @if (Model.Sexo == "1")
             {
@@ -33,6 +35,7 @@
         <dt>
             @Html.DisplayNameFor(model => model.Cpf)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Cpf)
         </dd>
@@ -40,6 +43,7 @@
         <dt>
             @Html.DisplayNameFor(model => model.Dt_nascimento)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Dt_nascimento)
         </dd>
@@ -47,6 +51,7 @@
         <dt>
             @Html.DisplayNameFor(model => model.Telefone)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Telefone)
         </dd>
@@ -54,13 +59,64 @@
         <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logradouro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplementoLogradouro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ComplementoLogradouro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Municipio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoEmpresa)
+        </dt>
+
+        <dd>
+            @ViewBag.Empresa
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoPerfil)
+        </dt>
+
+        <dd>
+            @ViewBag.Perfil
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Dt_cadastro)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Dt_cadastro)
         </dd>
@@ -68,9 +124,11 @@
         <dt>
             @Html.DisplayNameFor(model => model.Dt_atualizacao)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Dt_atualizacao)
         </dd>
+
     </dl>
 
     @using (Html.BeginForm())
@@ -79,7 +137,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="Excluir" class="col-md-1 btn btn-default" onclick="location.href='@Url.Action("Deletar", "Usuario", new { id=Model.id })'" />
+                <input type="button" value="Excluir" class="col-md-1 btn btn-default" onclick="location.href='@Url.Action("Deletar", "Usuario", new { id=Model.Id })'" />
             </div>
         </div>
 

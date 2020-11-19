@@ -79,18 +79,18 @@
             @Html.DisplayFor(model => model.ComplementoLogradouro)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.CodigoBairro)
+            @Html.DisplayNameFor(model => model.Bairro)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CodigoBairro)
+            @Html.DisplayFor(model => model.Bairro)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.CodigoMunicipio)
+            @Html.DisplayNameFor(model => model.Municipio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CodigoMunicipio)
+            @Html.DisplayFor(model => model.Municipio)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Cep)
@@ -104,14 +104,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CodigoEmpresa)
+            @ViewBag.Empresa
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.CodigoPerfil)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CodigoPerfil)
+            @ViewBag.Perfil
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Dt_cadastro)
@@ -129,18 +129,10 @@
             @Html.DisplayFor(model => model.Dt_atualizacao)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Deletado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Deletado)
-        </dd>
-
     </dl>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="button" class="col-md-1 btn btn-default" value="Editar " onclick="location.href='@Url.Action("Edit", "Usuario", new { id=Model.id })'" />
+            <input type="button" class="col-md-1 btn btn-default" value="Editar " onclick="location.href='@Url.Action("Edit", "Usuario", new { id=Model.Id })'" />
 
         </div>
     </div>

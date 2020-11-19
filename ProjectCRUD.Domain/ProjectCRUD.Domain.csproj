@@ -172,11 +172,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Repositorys\IEmpresaRepository.cs" />
+    <Compile Include="Interfaces\Repositorys\IPerfilRepository.cs" />
     <Compile Include="Interfaces\Repositorys\IUsuarioRepository.cs" />
+    <Compile Include="Interfaces\Services\IEmpresaServices.cs" />
+    <Compile Include="Interfaces\Services\IPerfilServices.cs" />
     <Compile Include="Interfaces\Services\IUsuarioServices.cs" />
+    <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Perfil.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmpresaServices.cs" />
+    <Compile Include="Services\PerfilServices.cs" />
     <Compile Include="Services\UsuarioServices.cs" />
   </ItemGroup>
   <ItemGroup>

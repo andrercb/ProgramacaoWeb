@@ -13,10 +13,14 @@ namespace ProjectCRUD.Web.Controllers
     {
 
         private readonly IUsuarioServices _usuarioServices;
+        private readonly IEmpresaServices _empresaServices;
+        private readonly IPerfilServices _perfilServices;
 
-        public UsuarioController(IUsuarioServices usuarioServices)
+        public UsuarioController(IUsuarioServices usuarioServices, IEmpresaServices empresaServices, IPerfilServices perfilServices)
         {
             _usuarioServices = usuarioServices;
+            _empresaServices = empresaServices;
+            _perfilServices = perfilServices;
         }
 
 
@@ -41,7 +45,10 @@ namespace ProjectCRUD.Web.Controllers
         {
             if (Login.Logado)
             {
+
                 Usuario usuario = _usuarioServices.GetUsuario(id);
+                ViewBag.Empresa = _empresaServices.ListEmpresa().Where(w => w.Id == usuario.CodigoEmpresa).FirstOrDefault().Nomefantasia;
+                ViewBag.Perfil = _perfilServices.ListPerfil().Where(w => w.Id == usuario.CodigoPerfil).FirstOrDefault().DescricaoPerfil;
 
                 return View(usuario);
             }
@@ -58,10 +65,16 @@ namespace ProjectCRUD.Web.Controllers
         {
             if (Login.Logado)
             {
+
+                ViewBag.ListaEmpresas = new SelectList(_empresaServices.ListEmpresa(), "Id", "Nomefantasia");
+                ViewBag.ListaPerfil = new SelectList(_perfilServices.ListPerfil(), "Id", "NomePerfil");
+
                 return View();
             }
             else
             {
+
+
                 Response.Redirect("~/Home/Index");
                 return View();
             }
@@ -69,7 +82,7 @@ namespace ProjectCRUD.Web.Controllers
 
         // POST: Usuarios/Create
         [HttpPost]
-        public ActionResult Create(Usuario usuario)
+        public ActionResult Create(Usuario usuario, int ListaEmpresas, int ListaPerfil)
         {
             try
             {
@@ -77,10 +90,15 @@ namespace ProjectCRUD.Web.Controllers
                 {
                     if (ModelState.IsValid)
                     {
+                        usuario.CodigoPerfil = ListaPerfil;
+                        usuario.CodigoEmpresa = ListaEmpresas;
                         _usuarioServices.Save(usuario);
 
                         return RedirectToAction("Index", "Usuario");
                     }
+
+                    ViewBag.ListaEmpresas = new SelectList(_empresaServices.ListEmpresa(), "Id", "Nomefantasia");
+                    ViewBag.ListaPerfil = new SelectList(_perfilServices.ListPerfil(), "Id", "NomePerfil");
                     return View();
                 }
                 else
@@ -102,6 +120,8 @@ namespace ProjectCRUD.Web.Controllers
             if (Login.Logado)
             {
                 Usuario usuario = _usuarioServices.GetUsuario(id);
+                ViewBag.ListaEmpresas = new SelectList(_empresaServices.ListEmpresa(), "Id", "Nomefantasia", usuario.CodigoEmpresa);
+                ViewBag.ListaPerfil = new SelectList(_perfilServices.ListPerfil(), "Id", "NomePerfil", usuario.CodigoPerfil);
 
                 return View(usuario);
             }
@@ -114,7 +134,7 @@ namespace ProjectCRUD.Web.Controllers
 
         // POST: Usuarios/Edit/5
         [HttpPost]
-        public ActionResult Edit(Usuario usuario)
+        public ActionResult Edit(Usuario usuario, int ListaEmpresas, int ListaPerfil)
         {
             try
             {
@@ -122,10 +142,15 @@ namespace ProjectCRUD.Web.Controllers
                 {
                     if (ModelState.IsValid)
                     {
+                        usuario.CodigoPerfil = ListaPerfil;
+                        usuario.CodigoEmpresa = ListaEmpresas;
                         _usuarioServices.Update(usuario);
 
                         return RedirectToAction("Index", "Usuario");
                     }
+
+                    ViewBag.ListaEmpresas = new SelectList(_empresaServices.ListEmpresa(), "Id", "Nomefantasia", usuario.CodigoEmpresa);
+                    ViewBag.ListaPerfil = new SelectList(_perfilServices.ListPerfil(), "Id", "NomePerfil", usuario.CodigoPerfil);
                     return View();
                 }
                 else
@@ -147,6 +172,8 @@ namespace ProjectCRUD.Web.Controllers
             if (Login.Logado)
             {
                 Usuario usuario = _usuarioServices.GetUsuario(id);
+                ViewBag.Empresa = _empresaServices.ListEmpresa().Where(w => w.Id == usuario.CodigoEmpresa).FirstOrDefault().Nomefantasia;
+                ViewBag.Perfil = _perfilServices.ListPerfil().Where(w => w.Id == usuario.CodigoPerfil).FirstOrDefault().DescricaoPerfil;
 
                 return View(usuario);
             }

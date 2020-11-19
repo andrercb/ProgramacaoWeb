@@ -129,96 +129,84 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CodigoUf, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Uf, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <div class="checkbox">
-                            @Html.DropDownListFor(model => model.CodigoUf, new List<SelectListItem>
+                            @Html.DropDownListFor(model => model.Uf, new List<SelectListItem>
                                              {
-                                               new SelectListItem { Text = "AC", Value = "1"},
-                                               new SelectListItem { Text = "AL", Value = "2"},
-                                               new SelectListItem { Text = "AP", Value = "3"},
-                                               new SelectListItem { Text = "AM", Value = "4"},
-                                               new SelectListItem { Text = "BA", Value = "5"},
-                                               new SelectListItem { Text = "CE", Value = "6"},
-                                               new SelectListItem { Text = "DF", Value = "7"},
-                                               new SelectListItem { Text = "ES", Value = "8"},
-                                               new SelectListItem { Text = "GO", Value = "9"},
-                                               new SelectListItem { Text = "MA", Value = "10"},
-                                               new SelectListItem { Text = "MT", Value = "11"},
-                                               new SelectListItem { Text = "MS", Value = "12"},
-                                               new SelectListItem { Text = "MG", Value = "13"},
-                                               new SelectListItem { Text = "PA", Value = "14"},
-                                               new SelectListItem { Text = "PB", Value = "15"},
-                                               new SelectListItem { Text = "PR", Value = "16"},
-                                               new SelectListItem { Text = "PR", Value = "17"},
-                                               new SelectListItem { Text = "PI", Value = "18"},
-                                               new SelectListItem { Text = "RJ", Value = "19"},
-                                               new SelectListItem { Text = "RN", Value = "20"},
-                                               new SelectListItem { Text = "RS", Value = "21"},
-                                               new SelectListItem { Text = "RO", Value = "22"},
-                                               new SelectListItem { Text = "RR", Value = "23"},
-                                               new SelectListItem { Text = "SC", Value = "24"},
-                                               new SelectListItem { Text = "SP", Value = "25"},
-                                               new SelectListItem { Text = "SE", Value = "26"},
-                                               new SelectListItem { Text = "TO", Value = "27"},
+                                               new SelectListItem { Text = "AC", Value = "AC"},
+                                               new SelectListItem { Text = "AL", Value = "AL"},
+                                               new SelectListItem { Text = "AP", Value = "AP"},
+                                               new SelectListItem { Text = "AM", Value = "AM"},
+                                               new SelectListItem { Text = "BA", Value = "BA"},
+                                               new SelectListItem { Text = "CE", Value = "CE"},
+                                               new SelectListItem { Text = "DF", Value = "DF"},
+                                               new SelectListItem { Text = "ES", Value = "ES"},
+                                               new SelectListItem { Text = "GO", Value = "GO"},
+                                               new SelectListItem { Text = "MA", Value = "MA"},
+                                               new SelectListItem { Text = "MT", Value = "MT"},
+                                               new SelectListItem { Text = "MS", Value = "MS"},
+                                               new SelectListItem { Text = "MG", Value = "MG"},
+                                               new SelectListItem { Text = "PA", Value = "PA"},
+                                               new SelectListItem { Text = "PB", Value = "PB"},
+                                               new SelectListItem { Text = "PR", Value = "PR"},
+                                               new SelectListItem { Text = "PR", Value = "PR"},
+                                               new SelectListItem { Text = "PI", Value = "PI"},
+                                               new SelectListItem { Text = "RJ", Value = "RJ"},
+                                               new SelectListItem { Text = "RN", Value = "RN"},
+                                               new SelectListItem { Text = "RS", Value = "RS"},
+                                               new SelectListItem { Text = "RO", Value = "RO"},
+                                               new SelectListItem { Text = "RR", Value = "RR"},
+                                               new SelectListItem { Text = "SC", Value = "SC"},
+                                               new SelectListItem { Text = "SP", Value = "SP"},
+                                               new SelectListItem { Text = "SE", Value = "SE"},
+                                               new SelectListItem { Text = "TO", Value = "TO"},
                                              }, "Selecione o Estado", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.CodigoUf, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Uf, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CodigoMunicipio, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Municipio, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <div class="checkbox">
-                            @Html.DropDownListFor(model => model.CodigoMunicipio, new List<SelectListItem>
-                                             {
-                                               new SelectListItem { Text = "São Paulo", Value = "1"},
-                                               new SelectListItem { Text = "Guarulhos ", Value = "2"},
-                                               new SelectListItem { Text = "Campinas ", Value = "3"}
-                                             }, "Selecione o Município", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.CodigoMunicipio, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.Municipio, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", onkeypress = "return Letras();" } })
+                            @Html.ValidationMessageFor(model => model.Municipio, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CodigoBairro, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.CodigoBairro, new List<SelectListItem>
-                                             {
-                                               new SelectListItem { Text = "Parque Quinta das Paineiras", Value = "1"},
-                                               new SelectListItem { Text = "Vila Andrade", Value = "3"},
-                                               new SelectListItem { Text = "Morumbi", Value = "5"}
-                                             }, "Selecione o Bairro", new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.CodigoBairro, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", onkeypress = "return Letras();" } })
+                        @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CodigoEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.DropDownListFor(model => model.CodigoEmpresa, new List<SelectListItem>
-                                             {
-                                               new SelectListItem { Text = "Sueli e Roberto Financeira ME", Value = "7"},
-                                             }, "Selecione a Empresa", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.CodigoEmpresa, "", new { @class = "text-danger" })
+                @if (@ViewBag.ListaEmpresas != null)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CodigoEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.DropDownList("ListaEmpresas", null, htmlAttributes: new { @class = "form-control m-b" })
+                                @Html.ValidationMessageFor(model => model.CodigoEmpresa, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CodigoPerfil, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.DropDownListFor(model => model.CodigoPerfil, new List<SelectListItem>
-                                             {
-                                               new SelectListItem { Text = "Administrador", Value = "1"},
-                                               new SelectListItem { Text = "Usuário", Value = "3"},
-                                             }, "Selecione o Perfil", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.CodigoPerfil, "", new { @class = "text-danger" })
+                }
+                @if (@ViewBag.ListaPerfil != null)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CodigoPerfil, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.DropDownList("ListaPerfil", null, htmlAttributes: new { @class = "form-control m-b" })
+                                @Html.ValidationMessageFor(model => model.CodigoPerfil, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
                 <div class="form-group">
                     @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">

@@ -12,7 +12,7 @@ namespace ProjectCRUD.Domain.Models
 
         public Usuario() { }
 
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Nome { get; set; }
@@ -52,19 +52,20 @@ namespace ProjectCRUD.Domain.Models
 
         [Display(Name = "Bairro")]
         [Required]
-        public int CodigoBairro { get; set; }
+        public string Bairro { get; set; }
 
         [Display(Name = "Município")]
         [Required]
-        public int CodigoMunicipio { get; set; }
+        public string Municipio { get; set; }
 
         [Required]
         [MinLength(10, ErrorMessage = "Cep inválido.")]
         public string Cep { get; set; }
 
         [Display(Name = "Estado")]
+        [MaxLength(2), MinLength(2)]
         [Required]
-        public int CodigoUf { get; set; }
+        public string Uf { get; set; }
 
         [Display(Name = "Empresa")]
         [Required]

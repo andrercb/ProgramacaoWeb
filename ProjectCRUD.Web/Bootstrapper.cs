@@ -1,4 +1,5 @@
 using Microsoft.Practices.Unity;
+using ProjectCRUD.Domain.Interfaces.Repositorys;
 using ProjectCRUD.Domain.Interfaces.Services;
 using ProjectCRUD.Domain.Models;
 using ProjectCRUD.Domain.Services;
@@ -26,6 +27,13 @@ namespace ProjectCRUD.Web
 
             container.RegisterType<IUsuarioServices, UsuarioServices>();
             container.RegisterType<IUsuarioRepository, UsuarioRepository>();
+
+            container.RegisterType<IEmpresaServices, EmpresaServices>();
+            container.RegisterType<IEmpresaRepository, EmpresaRepository>();
+
+            container.RegisterType<IPerfilServices, PerfilServices>();
+            container.RegisterType<IPerfilRepository, PerfilRepository>();
+
 
             // register all your components with the container here
             // it is NOT necessary to register your controllers
