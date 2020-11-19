@@ -112,6 +112,7 @@
       <DependentUpon>ProgramacaoWeb.edmx</DependentUpon>
       <LastGenOutput>ProgramacaoWeb.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Script Criação de Tabelas Programação Web.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -122,8 +123,6 @@
       <Name>ProjectCRUD.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
